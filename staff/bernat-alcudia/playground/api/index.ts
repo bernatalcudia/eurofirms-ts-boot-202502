@@ -1,18 +1,4 @@
-type User = {
-    id: string
-    name: string
-    email: string
-    username: string
-    password: string
-}
-
-type Post = {
-    id: string
-    author: string
-    image: string
-    text: string
-    date: Date
-}
+import { User, Post } from "./types"
 
 const post1: Post = { id: "1", author: "1", image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjEwbTRxZDIybXEybmR0OXMyYmljdmhxYjNpenl3eXl0Y3EwYmdtdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lDR0wnXboVr8c/giphy.gif", text: "taking a nap", date: new Date() }
 
