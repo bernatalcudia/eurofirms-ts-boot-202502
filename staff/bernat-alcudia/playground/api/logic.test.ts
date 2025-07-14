@@ -1,6 +1,6 @@
 import logic from "./logic"
 import data from "./data"
-import { CredentialsError, DuplicityError } from "./errors"
+import { CredentialsError, DuplicityError, NotFoundError } from "./errors"
 
 console.info(" SUITE: logic...")
 
@@ -63,7 +63,7 @@ console.info(" CASE:Success on existing user...")
     } catch (error) {
         catchedError = error
     } finally {
-        console.assert(catchedError instanceof DuplicityError, "catchedError instanceof DuplicityError")
+        console.assert(catchedError instanceof DuplicityError, "catchedError is instanceof DuplicityError")
         console.assert(catchedError.message === "User already exists", "catchedError message is 'User already exists'")
     }
 }
@@ -83,7 +83,7 @@ console.info(" CASE:Fails on existing user but wrong username...")
     } catch (error) {
         catchedError = error
     } finally {
-        console.assert(catchedError instanceof CredentialsError, "catchedError instanceof CredentialsError")
+        console.assert(catchedError instanceof CredentialsError, "catchedError is instanceof CredentialsError")
         console.assert(catchedError.message === "Wrong credentials", "catchedError message is 'Wrong credentials'")
     }
 }
@@ -103,7 +103,7 @@ console.info(" CASE:Fails on existing user but wrong password...")
     } catch (error) {
         catchedError = error
     } finally {
-        console.assert(catchedError instanceof CredentialsError, "catchedError instanceof CredentialsError")
+        console.assert(catchedError instanceof CredentialsError, "catchedError is instanceof CredentialsError")
         console.assert(catchedError.message === "Wrong credentials", "catchedError message is 'Wrong credentials'")
     }
 }
@@ -124,7 +124,41 @@ console.info(" CASE:Fails non existing user...")
     } catch (error) {
         catchedError = error
     } finally {
-        console.assert(catchedError instanceof CredentialsError, "catchedError instanceof CredentialsError")
+        console.assert(catchedError instanceof CredentialsError, "catchedError is instanceof CredentialsError")
         console.assert(catchedError.message === "Wrong credentials", "catchedError message is 'Wrong credentials'")
+    }
+}
+
+console.info("TEST:GetUsername...")
+
+console.info("CASE Success on existing user...")
+
+{
+    try {
+        const userId = data.uuid()
+
+        data.users.push({ id: userId, name: "Pedro Picapiedra", email: "pedro@picapiedra.com", username: "pedropicapiedra", password: "123123123" })
+
+        const name = logic.getUserName(userId)
+
+        console.assert(name === "Pedro Picapiedra", "name is Pedro Picapiedra")
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+console.info("CASE fails on non-existing user...")
+
+{
+    let catchedError
+    try {
+        const userId = data.uuid()
+
+        logic.getUserName(userId)
+    } catch (error) {
+        catchedError = error
+    } finally {
+        console.assert(catchedError instanceof NotFoundError, "catchedError is instanceof NotFoundError")
+        console.assert(catchedError.message === "user not found", "catchedError message is 'user not found'")
     }
 }

@@ -1,7 +1,7 @@
 import { Logic } from "./types"
 
 import data from "./data"
-import { DuplicityError, CredentialsError } from "./errors"
+import { DuplicityError, CredentialsError, NotFoundError } from "./errors"
 
 const logic: Logic = {
     registerUser(name: string, email: string, username: string, password: string): void {
@@ -20,7 +20,15 @@ const logic: Logic = {
 
         return user?.id
 
-    }
+    },
+
+    getUserName(userId) {
+        const user = data.users.find(user => user.id === userId)
+
+        if (!user) throw new NotFoundError("user not found")
+
+        return user?.name
+    },
 }
 
 export default logic
