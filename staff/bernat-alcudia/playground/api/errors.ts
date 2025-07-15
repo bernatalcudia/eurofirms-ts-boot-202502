@@ -20,8 +20,16 @@ class NotFoundError extends Error {
     }
 }
 
+class SystemError extends Error {
+    constructor(message: string) {
+        super(message)
+
+    }
+}
+
 export {
     DuplicityError,
     CredentialsError,
-    NotFoundError
+    NotFoundError,
+    SystemError
 }
