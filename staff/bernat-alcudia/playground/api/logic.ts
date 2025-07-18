@@ -1,7 +1,6 @@
 import { Logic } from "./types"
 import { IUser, User } from "./models"
 
-import data from "./data"
 import { SystemError, DuplicityError, CredentialsError, NotFoundError } from "./errors"
 
 const logic: Logic = {
