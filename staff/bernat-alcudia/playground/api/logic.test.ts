@@ -37,15 +37,52 @@ mongoose.connect("mongodb://localhost:27017/test")
     //     }
     // })
 
+    // .then(() => {
+    //     console.info(" TEST:getUserName...")
+
+    //     console.info(" CASE:Success on existing user...")
+
+    //     {
+    //         try {
+    //             return logic.getUserName("67bf483049b781456d78ce1b")
+    //                 .then((userName) => console.log("user name gotten", userName))
+    //                 .catch(error => console.error(error))
+    //         } catch (error) {
+    //             console.error(error)
+    //         }
+    //     }
+    // })
+
+    // .then(() => {
+    //     console.info(" TEST:createPost...")
+
+    //     console.info(" CASE:Success on existing user...")
+
+    //     {
+    //         try {
+    //             return logic.createPost("67bf483049b781456d78ce1b", "https://image.com/123", "post text")
+    //                 .then((result) => {
+    //                     console.assert(result === undefined, "result is undefined")
+    //                     console.log("post created")
+    //                 })
+    //                 .catch(error => console.error(error))
+    //         } catch (error) {
+    //             console.error(error)
+    //         }
+    //     }
+    // })
     .then(() => {
-        console.info(" TEST:getUserName...")
+        console.info(" TEST:getPosts...")
 
         console.info(" CASE:Success on existing user...")
 
         {
             try {
-                return logic.getUserName("67bf483049b781456d78ce1b")
-                    .then((userName) => console.log("user name gotten", userName))
+                return logic.getPosts("67bf483049b781456d78ce1b")
+                    .then((posts) => {
+
+                        console.log("posts gotten", posts)
+                    })
                     .catch(error => console.error(error))
             } catch (error) {
                 console.error(error)

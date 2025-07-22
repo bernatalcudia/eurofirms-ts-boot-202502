@@ -1,10 +1,16 @@
-import { Logic } from "./types"
-import { IUser, User } from "./models"
+import { Schema, Types } from "mongoose"
+
+import { Logic, PostType } from "./types"
+
+import { IUser, User, IPost, Post } from "./models"
 
 import { SystemError, DuplicityError, CredentialsError, NotFoundError } from "./errors"
 
+const { ObjectId } = Schema.Types
+
 const logic: Logic = {
     registerUser(name: string, email: string, username: string, password: string) {
+
         const user = new User<IUser>({ name, email, username, password })
 
         return user.save()
@@ -17,6 +23,7 @@ const logic: Logic = {
             .then(user => { })
     },
     authenticateUser(username: string, password: string) {
+
         return User.findOne({ username })
             .catch(error => {
                 throw new SystemError(error.message)
@@ -30,6 +37,7 @@ const logic: Logic = {
     },
 
     getUserName(userId) {
+
         return User.findById(userId)
             .catch(error => {
                 throw new SystemError(error.message)
@@ -41,6 +49,49 @@ const logic: Logic = {
                 return user.name
             })
     },
+
+    createPost(userId: string, image: string, text: string) {
+
+        return User.findById(userId)
+            .catch(error => {
+                throw new SystemError(error.message)
+            })
+            .then(user => {
+                if (!user)
+                    throw new NotFoundError("user not found")
+
+                return Post.create({ author: userId, image, text })
+                    .catch(error => {
+                        throw new SystemError(error.message)
+                    })
+            })
+            .then(post => { })
+    },
+
+    getPosts(userId: string) {
+        return User.findById(userId)
+            .catch(error => {
+                throw new SystemError(error.message)
+            })
+            .then(user => {
+                if (!user)
+                    throw new NotFoundError("user not found")
+                return Post.find().lean()
+
+            })
+            .then(posts => {
+                const normalizedPosts = posts.map<PostType>(post => {
+                    return {
+                        id: post._id.toString(),
+                        author: post.author.toString(),
+                        image: post.image,
+                        text: post.text,
+                        date: post.date
+                    }
+                })
+                return normalizedPosts
+            })
+    }
 }
 
 export default logic
