@@ -16,6 +16,7 @@ type Logic = {
 
     createPost(userId: string, image: string, text: string): Promise<void>
     getPosts(userId: string): Promise<PostType[]>
+    deletePost(userId: string, postId: string): Promise<void>
 }
 
 export {

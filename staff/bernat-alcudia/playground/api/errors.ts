@@ -27,9 +27,17 @@ class SystemError extends Error {
     }
 }
 
+class OwnershipError extends Error {
+    constructor(message: string) {
+        super(message)
+
+    }
+}
+
 export {
     DuplicityError,
     CredentialsError,
     NotFoundError,
-    SystemError
+    SystemError,
+    OwnershipError
 }
