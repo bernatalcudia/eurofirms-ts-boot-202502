@@ -1,6 +1,5 @@
 import mongoose from "mongoose"
-import logic from "./logic"
-import { CredentialsError, DuplicityError, NotFoundError } from "./errors"
+import { logic } from "."
 
 
 mongoose.connect("mongodb://localhost:27017/test")
