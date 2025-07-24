@@ -34,10 +34,18 @@ class OwnershipError extends Error {
     }
 }
 
+class ValidationError extends Error {
+    constructor(message: string) {
+        super(message)
+
+    }
+}
+
 export {
     DuplicityError,
     CredentialsError,
     NotFoundError,
     SystemError,
-    OwnershipError
+    OwnershipError,
+    ValidationError
 }

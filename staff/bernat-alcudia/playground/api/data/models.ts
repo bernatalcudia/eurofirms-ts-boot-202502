@@ -22,12 +22,12 @@ const user = new Schema<IUser>({
         required: true
     },
     email: {
-        String,
+        type: String,
         required: true,
         unique: true
     },
     username: {
-        String,
+        type: String,
         required: true,
         unique: true
     },
