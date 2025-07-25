@@ -1,7 +1,8 @@
 import { User } from "../data/models"
 import { RegisterUser } from "./types"
-import { DuplicityError, SystemError } from "../errors"
-import { validate } from "../validate"
+import { errors, validate } from "com"
+
+const { SystemError, DuplicityError } = errors
 
 export const registerUser: RegisterUser = (name: string, email: string, username: string, password: string) => {
 

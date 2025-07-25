@@ -1,7 +1,8 @@
 import { DeletePost } from "./types"
 import { User, Post } from "../data/models"
-import { SystemError, NotFoundError, OwnershipError } from "../errors"
-import { validate } from "../validate"
+import { errors, validate } from "com"
+
+const { SystemError, NotFoundError, OwnershipError } = errors
 
 export const deletePost: DeletePost = (userId: string, postId: string) => {
     validate.id(userId, "userId")

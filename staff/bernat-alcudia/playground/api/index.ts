@@ -2,14 +2,15 @@ import express from "express"
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 
-import { SystemError } from "./errors"
+import { errors } from "com"
+
+const { SystemError } = errors
+
 import { logic } from "./logic"
 
-const MONGO_URL = "mongodb://localhost:27017/test"
-const PORT = 8080
-const JWT_SECRET = "the secret is 32 chars long"
+const { MONGO_URL, JWT_SECRET, PORT } = process.env
 
-mongoose.connect(MONGO_URL)
+mongoose.connect(MONGO_URL!)
     .then(() => {
 
 
@@ -30,7 +31,7 @@ mongoose.connect(MONGO_URL)
                         res.status(409).json({ error: error.name, message: error.message })
                     })
             } catch (error) {
-                res.status(400).json({ error: SystemError.name, message: error.message })
+                res.status(400).json({ error: SystemError.name, message: (error as Error).message })
             }
         })
 
@@ -41,14 +42,14 @@ mongoose.connect(MONGO_URL)
 
                 logic.authenticateUser(username, password)
                     .then(userId => {
-                        const token = jwt.sign({ sub: userId }, JWT_SECRET)
+                        const token = jwt.sign({ sub: userId }, JWT_SECRET!)
                         res.status(200).json({ token })
                     })
                     .catch(error => {
                         res.status(401).json({ error: error.name, message: error.message })
                     })
             } catch (error) {
-                res.status(400).json({ error: SystemError.name, message: error.message })
+                res.status(400).json({ error: SystemError.name, message: (error as Error).message })
             }
         })
 
@@ -66,7 +67,7 @@ mongoose.connect(MONGO_URL)
 
                 const token = authorization?.slice(7)
 
-                const { sub: userId } = jwt.verify(token, JWT_SECRET)
+                const { sub: userId } = jwt.verify(token, JWT_SECRET!)
 
                 logic.getUserName(userId as string)
                     .then(name => {
@@ -76,7 +77,7 @@ mongoose.connect(MONGO_URL)
                         res.status(401).json({ error: error.name, message: error.message })
                     })
             } catch (error) {
-                res.status(400).json({ error: SystemError.name, message: error.message })
+                res.status(400).json({ error: SystemError.name, message: (error as Error).message })
             }
         })
 
