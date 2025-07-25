@@ -5,6 +5,9 @@ const nameSchema = zod.string().min(3).max(50)
 const emailSchema = zod.string().email()
 const usernameSchema = zod.string().min(3).max(50)
 const passwordSchema = zod.string().min(8).max(50)
+const idSchema = zod.string().uuid()
+const urlSchema = zod.string().url()
+const textSchema = zod.string().min(3).max(1000)
 
 function validateWithSchema<T>(schema: ZodSchema, data: unknown, explain = "data") {
     const result = schema.safeParse(data)
@@ -26,5 +29,14 @@ export const validate = {
     },
     password: (password: string, explain = "password") => {
         validateWithSchema(passwordSchema, password, explain)
+    },
+    id: (id: string, explain = "id") => {
+        validateWithSchema(idSchema, id, explain)
+    },
+    url: (url: string, explain = "url") => {
+        validateWithSchema(urlSchema, url, explain)
+    },
+    text: (text: string, explain = "text") => {
+        validateWithSchema(textSchema, text, explain)
     }
 }

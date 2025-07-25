@@ -1,8 +1,13 @@
 import { CreatePost } from "./types"
 import { User, Post } from "../data/models"
 import { SystemError, NotFoundError } from "../errors"
+import { validate } from "../validate"
 
 export const createPost: CreatePost = (userId: string, image: string, text: string) => {
+    validate.id(userId, "userId")
+    validate.url(image, "image")
+    validate.text(text)
+
 
     return User.findById(userId)
         .catch(error => {
