@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import { registerUser } from "./registerUser"
 
 
-mongoose.connect("mongodb://localhost:27017/test")
+mongoose.connect(process.env.MONGO_URL_TEST!)
     .then(() => {
         console.info(" SUITE: logic...")
 

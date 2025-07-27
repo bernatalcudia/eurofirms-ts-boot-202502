@@ -13,7 +13,7 @@ export const getUserName: GetUserName = (userId: string) => {
         })
         .then(user => {
             if (!user)
-                throw new NotFoundError("User not found")
+                throw new NotFoundError("user not found")
 
             return user.name
         })

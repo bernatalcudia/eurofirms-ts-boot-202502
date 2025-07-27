@@ -14,7 +14,7 @@ export const authenticateUser: AuthenticateUser = (username: string, password: s
         })
         .then(user => {
             if (!user || user.password !== password)
-                throw new CredentialsError(" wrong credentials")
+                throw new CredentialsError("wrong credentials")
 
             return user.id
         })

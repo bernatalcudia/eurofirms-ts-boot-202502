@@ -6,9 +6,10 @@
   "scripts": {
     "start": "npx tsx  --env-file=.env   index.js",
     "inspect": "npx tsx  --env-file=.env  --inspect -brk index.js --",
-    "compile-watch": "npx tsc --lib  es2015,dom --noEmit --esModuleInterop --skipLibCheck --watch --strict *.ts",
-    "test": "tsx  --env-file=.env  logic/*.test.ts",
-    "test-inspect": "tsx  --env-file=.env  --inspect-brk logic/*.test.ts",
+    "compile": "npx tsc --lib  es2015,dom --noEmit --esModuleInterop --skipLibCheck  --strict *.ts",
+    "compile-watch": "npx tsc --lib  es2015,dom --noEmit --esModuleInterop --skipLibCheck  --strict *.ts --watch",
+    "test": "mocha --node-option 'env-file=.env' --node-option 'import=tsx' ./node_modules/mocha/bin  logic/*.spec.ts",
+    "test-inspect": "mocha node-option 'inspect-brk' --node-option 'env-file=.env' --node-option 'import=tsx' ./node_modules/mocha/bin  logic/*.spec.ts",
     "compile-test": "npm run compile && npm run test",
     "populate": "tsx data/populate"
   },
@@ -16,8 +17,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^5.2.2",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/mocha": "^10.0.10",
     "@types/node": "^24.1.0",
     "chai": "^5.2.1",
     "mocha": "^11.7.1",
