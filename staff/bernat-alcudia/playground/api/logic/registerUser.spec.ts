@@ -1,10 +1,9 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
-import { IUser, User, UserDoc } from "../data/models"
+import { UserDocType, User, UserDoc } from "../data/models"
 import { registerUser } from "./registerUser"
-import { errors } from "com"
+import { DuplicityError } from "com/errors"
 
-const { DuplicityError } = errors
 
 
 
@@ -15,7 +14,7 @@ describe("registerUser", () => {
     beforeEach(() => User.deleteMany({}))
 
     it("register a new user", () => {
-        let value: void, user: IUser | null
+        let value: void, user: UserDocType | null
         return registerUser("Peter Pan", "peter@pan.com", "peterpan", "123123123")
             .then((_value) => { value = _value })
             .then(() => {

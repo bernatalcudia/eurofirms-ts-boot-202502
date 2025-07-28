@@ -2,7 +2,7 @@ import { Schema, Types } from "mongoose"
 
 import { Logic, PostType } from "./types"
 
-// import { IUser, User, IPost, Post } from "../data/models"
+// import { UserDocType, User, PostDocType, Post } from "../data/models"
 
 // import { SystemError, DuplicityError, CredentialsError, NotFoundError, OwnershipError } from "../errors"
 import { registerUser } from "./registerUser"

@@ -2,7 +2,7 @@ import { AuthenticateUser } from "./types"
 import { User } from "../data/models"
 import { errors, validate } from "com"
 
-const { CredentialsError, SystemError } = errors
+const { CredentialsError, SystemError, NotFoundError } = errors
 
 export const authenticateUser: AuthenticateUser = (username: string, password: string) => {
     validate.username(username, "username")
@@ -13,7 +13,10 @@ export const authenticateUser: AuthenticateUser = (username: string, password: s
             throw new SystemError(error.message)
         })
         .then(user => {
-            if (!user || user.password !== password)
+            if (!user)
+                throw new NotFoundError("user not found")
+
+            if (user.password !== password)
                 throw new CredentialsError("wrong credentials")
 
             return user.id
