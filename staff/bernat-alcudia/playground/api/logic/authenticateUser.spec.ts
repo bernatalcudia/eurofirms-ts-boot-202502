@@ -1,9 +1,8 @@
 import mongoose from "mongoose"
 import { expect } from "chai"
 import { UserDocType, User } from "../data/models"
-import { authenticateUser } from "./authenticateUser"
+import { authenticateUser } from "./authenticateUser.ts"
 import { NotFoundError, CredentialsError, SystemError } from "com/errors"
-import { after, it } from "node:test"
 
 
 describe("authenticateUser", () => {

@@ -1,15 +1,15 @@
 import mongoose from "mongoose"
-import { deletePost } from "./deletePost"
+import { deletePost } from "./deletePost.ts"
 
 
-mongoose.connect("mongodb://localhost:27017/test")
+mongoose.connect(process.env.MONGO_URL_TEST!)
     .then(() => {
         console.info(" TEST:deletePost...")
 
         console.info(" CASE:Success on existing user...")
 
         try {
-            return deletePost("67bf483049b781456d78ce1b", "67zf483069b781456d78cw1b")
+            return deletePost("68921234cad13b12d74182db", "68921561444d778ee7723454")
                 .then((result) => {
                     console.assert(result === undefined, "result is undefined")
 

@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
-import { UserDocType, User, UserDoc } from "../data/models"
-import { registerUser } from "./registerUser"
+import { UserDocType, User } from "../data/models"
+import { registerUser } from "./registerUser.ts"
 import { DuplicityError } from "com/errors"
 
 
@@ -15,11 +15,10 @@ describe("registerUser", () => {
 
     it("register a new user", () => {
         let value: void, user: UserDocType | null
+
         return registerUser("Peter Pan", "peter@pan.com", "peterpan", "123123123")
             .then((_value) => { value = _value })
-            .then(() => {
-                User.findOne().lean()
-            })
+            .then(() => User.findOne().lean())
             .then((_user) => { user = _user! })
             .finally(() => {
                 expect(value).to.be.undefined

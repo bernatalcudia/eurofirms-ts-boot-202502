@@ -1,15 +1,15 @@
 import mongoose from "mongoose"
-import { getPosts } from "./getPosts"
+import { getPosts } from "./getPosts.ts"
 
 
-mongoose.connect("mongodb://localhost:27017/test")
+mongoose.connect(process.env.MONGO_URL_TEST!)
     .then(() => {
         console.info(" TEST:getPosts...")
 
         console.info(" CASE:Success on existing user...")
 
         try {
-            return getPosts("67bf483049b781456d78ce1b")
+            return getPosts("68921234cad13b12d74182db")
                 .then((posts) => {
 
                     console.log("posts gotten", posts)

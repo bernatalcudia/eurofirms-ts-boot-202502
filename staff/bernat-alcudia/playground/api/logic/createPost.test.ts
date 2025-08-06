@@ -1,16 +1,16 @@
 import mongoose from "mongoose"
-import { createPost } from "./createPost"
+import { createPost } from "./createPost.ts"
 
 
 
-mongoose.connect("mongodb://localhost:27017/test")
+mongoose.connect(process.env.MONGO_URL_TEST!)
     .then(() => {
         console.info(" TEST:createPost...")
 
         console.info(" CASE:Success on existing user...")
 
         try {
-            return createPost("67bf483049b781456d78ce1b", "https://image.com/123", "post text")
+            return createPost("68921234cad13b12d74182db", "https://image.com/123", "post text")
                 .then((result) => {
                     console.assert(result === undefined, "result is undefined")
                     console.log("post created")

@@ -35,7 +35,7 @@ const user = new Schema<UserDocType>({
         required: true,
         unique: true
     },
-    password: { String, required: true }
+    password: { type: String, required: true }
 })
 
 const post = new Schema<PostDocType>({

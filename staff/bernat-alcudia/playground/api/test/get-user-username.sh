@@ -1,1 +1,1 @@
-curl -X GET -H "Authorization: Bearer " http://localhost:8080/users/self -v
+curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODkzNTIxNDA2NzJkZGMxN2M2ZDg0M2QiLCJpYXQiOjE3NTQ0ODUzNTl9.L8ekFJrBTf8HqGP4N7I52kSMbVMX7nvossHfPrKgMRE" http://localhost:8080/users/self -v

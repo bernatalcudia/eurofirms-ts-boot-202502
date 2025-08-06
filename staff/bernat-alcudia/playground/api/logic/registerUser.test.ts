@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { registerUser } from "./registerUser"
+import { registerUser } from "./registerUser.ts"
 
 
 mongoose.connect(process.env.MONGO_URL_TEST!)
