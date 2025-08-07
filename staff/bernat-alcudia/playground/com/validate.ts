@@ -7,7 +7,7 @@ function validateWithSchema<T>(schema: ZodSchema<T>, data: unknown, explain = "d
     if (result.success)
         return
 
-    throw new ValidationError(`invalid ${explain} (${result.error.errors[0]?.message || "validation failed"})`)
+    throw new ValidationError(`invalid ${explain} (${result.error?.message || "validation failed"})`)
 }
 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i

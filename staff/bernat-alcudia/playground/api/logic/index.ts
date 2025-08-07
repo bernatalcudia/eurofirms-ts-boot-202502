@@ -7,7 +7,7 @@ import { Logic, PostType } from "./types"
 // import { SystemError, DuplicityError, CredentialsError, NotFoundError, OwnershipError } from "../errors"
 import { registerUser } from "./registerUser"
 import { authenticateUser } from "./authenticateUser"
-import { getUserName } from "./getUsername"
+import { getUser } from "./getUser"
 import { createPost } from "./createPost"
 import { getPosts } from "./getPosts"
 import { deletePost } from "./deletePost"
@@ -18,7 +18,7 @@ const { ObjectId } = Schema.Types
 const logic: Logic = {
     registerUser,
     authenticateUser,
-    getUserName,
+    getUser,
     createPost,
     getPosts,
     deletePost,

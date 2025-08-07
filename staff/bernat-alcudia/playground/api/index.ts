@@ -69,9 +69,9 @@ mongoose.connect(MONGO_URL!)
 
                 const { sub: userId } = jwt.verify(token, JWT_SECRET!)
 
-                logic.getUserName(userId as string)
-                    .then(name => {
-                        res.json(name)
+                logic.getUser(userId as string)
+                    .then(user => {
+                        res.json(user)
                     })
                     .catch(error => {
                         res.status(401).json({ error: error.name, message: error.message })
