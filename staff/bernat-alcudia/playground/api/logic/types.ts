@@ -44,5 +44,7 @@ export {
     GetPosts,
     DeletePost,
     Logic,
+
+    UserType,
     PostType
 }
