@@ -37,14 +37,15 @@ type Logic = {
 }
 
 export {
+    UserType,
+    PostType,
+
     RegisterUser,
     AuthenticateUser,
     GetUser,
     CreatePost,
     GetPosts,
     DeletePost,
-    Logic,
 
-    UserType,
-    PostType
+    Logic,
 }

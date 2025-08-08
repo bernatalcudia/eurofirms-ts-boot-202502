@@ -9,10 +9,14 @@ interface LoginForm extends HTMLFormElement {
     elements: LoginFormElements
 }
 
+interface LoginProps {
+    onRegisterClicked: () => void
+    onUserLoggedIn: () => void
+}
 
-export const Login = () => {
+export const Login = ({ onRegisterClicked, onUserLoggedIn }: LoginProps) => {
 
-    const handleSubmit = (event: React.FormEvent<LoginForm>) => {
+    const handleSubmit = async (event: React.FormEvent<LoginForm>) => {
         event.preventDefault()
 
         const form = event.currentTarget
@@ -21,15 +25,21 @@ export const Login = () => {
         const password = form.elements.password.value
 
         try {
-            logic.loginUser(username, password)
+            await logic.loginUser(username, password)
 
-            alert("Login successful")
+            onUserLoggedIn()
         } catch (error) {
             console.error(error)
 
             alert((error as Error).message)
 
         }
+    }
+
+    const handleRegisterClicked = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault()
+
+        onRegisterClicked()
     }
 
     return <>
@@ -43,7 +53,8 @@ export const Login = () => {
             <input type="password" id="password" placeholder="password" />
 
             <button type="submit">Login</button>
-
         </form>
+
+        <p>Don't have an account? <a href="#" onClick={handleRegisterClicked}>Register</a></p>
     </>
 }

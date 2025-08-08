@@ -1,27 +1,25 @@
-const { validate, errors } = await import("com")
-import { LoginUser } from "./types"
+const { errors } = await import("com")
+import { GetUser, UserType } from "./types"
 const { SystemError } = errors
 import { data } from "../data"
 
+export const getUser: GetUser = async (): Promise<UserType> => {
+    const token = data.getToken()
+    if (!token) throw new SystemError("token not found")
 
-export const loginUser: LoginUser = async (username: string, password: string): Promise<void> => {
-
-    validate.username(username)
-    validate.password(password)
-
-    return fetch("http://localhost:8080/users/auth", {
-        method: "POST",
+    return fetch("http://localhost:8080/users/self", {
+        method: "GET",
         headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
+            "Authorization": `Bearer ${token}`
+        }
+
     })
         .catch(error => { throw new SystemError(error.message) })
         .then(response => {
             if (response.status === 200)
                 return response.json()
                     .catch(error => { throw new SystemError(error.message) })
-                    .then((token) => data.setToken(token))
+                    .then(user => user as UserType)
 
             return response.json()
                 .catch(error => { throw new SystemError(error.message) })
