@@ -1,19 +1,33 @@
 import { logic } from "../logic"
 
+interface RegisterFormElements extends HTMLFormControlsCollection {
+    name: HTMLInputElement
+    email: HTMLInputElement
+    username: HTMLInputElement
+    password: HTMLInputElement
+}
+
+interface RegisterForm extends HTMLFormElement {
+    elements: RegisterFormElements
+}
+
+
 export const Register = () => {
 
-    const handleSubmit = event => {
+    const handleSubmit = (event: React.FormEvent<RegisterForm>) => {
         event.preventDefault()
 
-        const form = event.target
+        const form = event.currentTarget
 
-        const name = form.name.value
-        const email = form.email.value
-        const username = form.username.value
-        const password = form.password.value
+        const name = form.elements.name.value
+        const email = form.elements.email.value
+        const username = form.elements.username.value
+        const password = form.elements.password.value
 
         try {
             logic.registerUser(name, email, username, password)
+
+            alert("Registration successful")
         } catch (error) {
             console.error(error)
 

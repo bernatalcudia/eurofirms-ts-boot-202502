@@ -15,7 +15,7 @@ import { deletePost } from "./deletePost"
 
 const { ObjectId } = Schema.Types
 
-const logic: Logic = {
+export const logic: Logic = {
     registerUser,
     authenticateUser,
     getUser,
@@ -24,4 +24,3 @@ const logic: Logic = {
     deletePost,
 }
 
-export { logic }
