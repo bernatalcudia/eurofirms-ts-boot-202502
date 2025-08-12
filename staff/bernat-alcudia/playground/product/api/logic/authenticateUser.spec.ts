@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import { expect } from "chai"
-import { UserDocType, User } from "../data/models"
+import { UserDocType, User } from "../data/models.ts"
 import { authenticateUser } from "./authenticateUser.ts"
 import { NotFoundError, CredentialsError } from "com/errors"
 

@@ -1,6 +1,6 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
-import { UserDocType, User } from "../data/models"
+import { UserDocType, User } from "../data/models.ts"
 import { registerUser } from "./registerUser.ts"
 import { DuplicityError } from "com/errors"
 

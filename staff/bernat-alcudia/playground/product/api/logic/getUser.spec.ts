@@ -1,6 +1,6 @@
 import { expect } from "chai"
 import mongoose, { Types } from "mongoose"
-import { User } from "../data/models"
+import { User } from "../data/models.ts"
 import { getUser } from "./getUser.ts"
 import { SystemError, NotFoundError } from "com/errors"
 import { UserType } from "./types.ts"
