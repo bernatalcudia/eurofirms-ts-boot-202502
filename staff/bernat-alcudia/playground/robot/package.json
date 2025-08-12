@@ -1,0 +1,23 @@
+{
+  "name": "robot",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "compile": "npx tsc",
+    "compile-watch": "npx tsc --watch",
+    "test": "npx mocha *.spec.js",
+    "test-watch": "npx mocha --node-option='watch' *.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1",
+    "typescript": "^5.9.2"
+  }
+}
