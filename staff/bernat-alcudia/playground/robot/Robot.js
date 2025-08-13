@@ -1,9 +1,9 @@
 export class Robot {
-    constructor() {
+    constructor(orientation = "north") {
         this.x = 0;
         this.y = 0;
         this.direction = "deadlock";
-        this.orientation = "north";
+        this.orientation = orientation;
     }
     forward() {
         this.direction = "forward";

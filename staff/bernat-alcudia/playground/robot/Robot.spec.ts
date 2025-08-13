@@ -3,15 +3,28 @@ import { expect } from "chai"
 import { Robot } from "./Robot.js"
 
 describe("Robot", () => {
-    it("constructs an instance of Robot", () => {
-        const robot = new Robot()
+    describe("constructs", () => {
+        it("an instance of Robot with default orientation to north", () => {
+            const robot = new Robot()
 
-        expect(robot).to.be.instanceOf(Robot)
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(0)
-        expect(robot.direction).to.equal("deadlock")
-        expect(robot.orientation).to.equal("north")
+            expect(robot).to.be.instanceOf(Robot)
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(0)
+            expect(robot.direction).to.equal("deadlock")
+            expect(robot.orientation).to.equal("north")
+        })
+
+        it("an instance of Robot with orientation to east", () => {
+            const robot = new Robot("east")
+
+            expect(robot).to.be.instanceOf(Robot)
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(0)
+            expect(robot.direction).to.equal("deadlock")
+            expect(robot.orientation).to.equal("east")
+        })
     })
+
 
     describe("goes forward", () => {
         it("to the north", () => {
