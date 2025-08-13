@@ -20,6 +20,21 @@ export class Robot {
             this.x -= 10;
         }
     }
+    backward() {
+        this.direction = "backward";
+        if (this.orientation === "north") {
+            this.y += 10;
+        }
+        else if (this.orientation === "east") {
+            this.x -= 10;
+        }
+        else if (this.orientation === "south") {
+            this.y -= 10;
+        }
+        else if (this.orientation === "west") {
+            this.x += 10;
+        }
+    }
     right() {
         if (this.orientation === "north") {
             this.orientation = "east";

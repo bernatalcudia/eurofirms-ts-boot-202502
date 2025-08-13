@@ -14,6 +14,7 @@ export class Robot {
 
     forward() {
         this.direction = "forward"
+
         if (this.orientation === "north") {
             this.y -= 10
         } else if (this.orientation === "east") {
@@ -22,6 +23,20 @@ export class Robot {
             this.y += 10
         } else if (this.orientation === "west") {
             this.x -= 10
+        }
+    }
+
+    backward() {
+        this.direction = "backward"
+
+        if (this.orientation === "north") {
+            this.y += 10
+        } else if (this.orientation === "east") {
+            this.x -= 10
+        } else if (this.orientation === "south") {
+            this.y -= 10
+        } else if (this.orientation === "west") {
+            this.x += 10
         }
     }
 

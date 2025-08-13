@@ -13,233 +13,466 @@ describe("Robot", () => {
         expect(robot.orientation).to.equal("north")
     })
 
-    it("goes forward to the north", () => {
-        const robot = new Robot()
+    describe("goes forward", () => {
+        it("to the north", () => {
+            const robot = new Robot()
 
-        robot.forward()
+            robot.forward()
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-10)
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-10)
 
-        robot.forward()
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-20)
+            robot.forward()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-20)
 
-        robot.forward()
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-30)
+            robot.forward()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-30)
+        })
+
+        it("to the east after turning right 1 time", () => {
+            const robot = new Robot()
+
+            robot.right()
+
+            expect(robot.orientation).to.equal("east")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(10)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(20)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(30)
+            expect(robot.y).to.equal(0)
+        })
+
+        it("to the south after turning right 2 times", () => {
+            const robot = new Robot()
+
+
+            robot.right()
+            robot.right()
+
+            expect(robot.orientation).to.equal("south")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(10)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(20)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(30)
+        })
+
+        it("to the west after turning right 3 times", () => {
+            const robot = new Robot()
+
+
+            robot.right()
+            robot.right()
+            robot.right()
+
+            expect(robot.orientation).to.equal("west")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(-10)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(-20)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(-30)
+            expect(robot.y).to.equal(0)
+        })
+
+        it("to the north after turning right 4 times", () => {
+            const robot = new Robot()
+
+            robot.right()
+            robot.right()
+            robot.right()
+            robot.right()
+
+            expect(robot.orientation).to.equal("north")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-10)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-20)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-30)
+        })
+
+        it("to the west after turning left 1 time", () => {
+            const robot = new Robot()
+
+
+            robot.left()
+
+
+            expect(robot.orientation).to.equal("west")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(-10)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(-20)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(-30)
+            expect(robot.y).to.equal(0)
+        })
+
+        it("to the south after turning left 2 times", () => {
+            const robot = new Robot()
+
+
+            robot.left()
+            robot.left()
+
+            expect(robot.orientation).to.equal("south")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(10)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(20)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(30)
+        })
+
+        it("to the east after turning left 3 times", () => {
+            const robot = new Robot()
+
+            robot.left()
+            robot.left()
+            robot.left()
+
+            expect(robot.orientation).to.equal("east")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(10)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(20)
+            expect(robot.y).to.equal(0)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(30)
+            expect(robot.y).to.equal(0)
+        })
+
+        it("to the north after turning left 4 times", () => {
+            const robot = new Robot()
+
+            robot.left()
+            robot.left()
+            robot.left()
+            robot.left()
+
+            expect(robot.orientation).to.equal("north")
+
+            robot.forward()
+
+            expect(robot.direction).to.equal("forward")
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-10)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-20)
+
+            robot.forward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-30)
+        })
     })
 
-    it("goes forward to the east after turning right 1 time", () => {
-        const robot = new Robot()
+    describe("goes backward", () => {
+        it("to the south", () => {
+            const robot = new Robot()
 
-        robot.right()
+            robot.backward()
 
-        expect(robot.orientation).to.equal("east")
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(10)
 
-        robot.forward()
+            robot.backward()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(20)
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(10)
-        expect(robot.y).to.equal(0)
+            robot.backward()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(30)
+        })
 
-        robot.forward()
+        it("to the west after turning right 1 time", () => {
+            const robot = new Robot()
 
-        expect(robot.x).to.equal(20)
-        expect(robot.y).to.equal(0)
+            robot.right()
 
-        robot.forward()
+            expect(robot.orientation).to.equal("east")
 
-        expect(robot.x).to.equal(30)
-        expect(robot.y).to.equal(0)
-    })
+            robot.backward()
 
-    it("goes forward to the south after turning right 2 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(-10)
+            expect(robot.y).to.equal(0)
 
+            robot.backward()
 
-        robot.right()
-        robot.right()
+            expect(robot.x).to.equal(-20)
+            expect(robot.y).to.equal(0)
 
-        expect(robot.orientation).to.equal("south")
+            robot.backward()
 
-        robot.forward()
+            expect(robot.x).to.equal(-30)
+            expect(robot.y).to.equal(0)
+        })
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(10)
+        it("to the north after turning right 2 times", () => {
+            const robot = new Robot()
 
-        robot.forward()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(20)
+            robot.right()
+            robot.right()
 
-        robot.forward()
+            expect(robot.orientation).to.equal("south")
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(30)
-    })
+            robot.backward()
 
-    it("goes forward to the west after turning right 3 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-10)
 
+            robot.backward()
 
-        robot.right()
-        robot.right()
-        robot.right()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-20)
 
-        expect(robot.orientation).to.equal("west")
+            robot.backward()
 
-        robot.forward()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-30)
+        })
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(-10)
-        expect(robot.y).to.equal(0)
+        it("to the east after turning right 3 times", () => {
+            const robot = new Robot()
 
-        robot.forward()
 
-        expect(robot.x).to.equal(-20)
-        expect(robot.y).to.equal(0)
+            robot.right()
+            robot.right()
+            robot.right()
 
-        robot.forward()
+            expect(robot.orientation).to.equal("west")
 
-        expect(robot.x).to.equal(-30)
-        expect(robot.y).to.equal(0)
-    })
+            robot.backward()
 
-    it("goes forward to the north after turning right 4 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(10)
+            expect(robot.y).to.equal(0)
 
-        robot.right()
-        robot.right()
-        robot.right()
-        robot.right()
+            robot.backward()
 
-        expect(robot.orientation).to.equal("north")
+            expect(robot.x).to.equal(20)
+            expect(robot.y).to.equal(0)
 
-        robot.forward()
+            robot.backward()
 
-        expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(30)
+            expect(robot.y).to.equal(0)
+        })
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-10)
+        it("to the south after turning right 4 times", () => {
+            const robot = new Robot()
 
-        robot.forward()
+            robot.right()
+            robot.right()
+            robot.right()
+            robot.right()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-20)
+            expect(robot.orientation).to.equal("north")
 
-        robot.forward()
+            robot.backward()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-30)
-    })
+            expect(robot.direction).to.equal("backward")
 
-    it("goes forward to the west after turning left 1 time", () => {
-        const robot = new Robot()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(10)
 
+            robot.backward()
 
-        robot.left()
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(20)
 
+            robot.backward()
 
-        expect(robot.orientation).to.equal("west")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(30)
+        })
 
-        robot.forward()
+        it("to the east after turning left 1 time", () => {
+            const robot = new Robot()
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(-10)
-        expect(robot.y).to.equal(0)
 
-        robot.forward()
+            robot.left()
 
-        expect(robot.x).to.equal(-20)
-        expect(robot.y).to.equal(0)
 
-        robot.forward()
+            expect(robot.orientation).to.equal("west")
 
-        expect(robot.x).to.equal(-30)
-        expect(robot.y).to.equal(0)
-    })
+            robot.backward()
 
-    it("goes forward to the south after turning left 2 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(10)
+            expect(robot.y).to.equal(0)
 
+            robot.backward()
 
-        robot.left()
-        robot.left()
+            expect(robot.x).to.equal(20)
+            expect(robot.y).to.equal(0)
 
-        expect(robot.orientation).to.equal("south")
+            robot.backward()
 
-        robot.forward()
+            expect(robot.x).to.equal(30)
+            expect(robot.y).to.equal(0)
+        })
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(10)
+        it("to the north after turning left 2 times", () => {
+            const robot = new Robot()
 
-        robot.forward()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(20)
+            robot.left()
+            robot.left()
 
-        robot.forward()
+            expect(robot.orientation).to.equal("south")
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(30)
-    })
+            robot.backward()
 
-    it("goes forward to the east after turning left 3 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-10)
 
-        robot.left()
-        robot.left()
-        robot.left()
+            robot.backward()
 
-        expect(robot.orientation).to.equal("east")
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-20)
 
-        robot.forward()
+            robot.backward()
 
-        expect(robot.direction).to.equal("forward")
-        expect(robot.x).to.equal(10)
-        expect(robot.y).to.equal(0)
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(-30)
+        })
 
-        robot.forward()
+        it("to the west after turning left 3 times", () => {
+            const robot = new Robot()
 
-        expect(robot.x).to.equal(20)
-        expect(robot.y).to.equal(0)
+            robot.left()
+            robot.left()
+            robot.left()
 
-        robot.forward()
+            expect(robot.orientation).to.equal("east")
 
-        expect(robot.x).to.equal(30)
-        expect(robot.y).to.equal(0)
-    })
+            robot.backward()
 
-    it("goes forward to the north after turning left 4 times", () => {
-        const robot = new Robot()
+            expect(robot.direction).to.equal("backward")
+            expect(robot.x).to.equal(-10)
+            expect(robot.y).to.equal(0)
 
-        robot.left()
-        robot.left()
-        robot.left()
-        robot.left()
+            robot.backward()
 
-        expect(robot.orientation).to.equal("north")
+            expect(robot.x).to.equal(-20)
+            expect(robot.y).to.equal(0)
 
-        robot.forward()
+            robot.backward()
 
-        expect(robot.direction).to.equal("forward")
+            expect(robot.x).to.equal(-30)
+            expect(robot.y).to.equal(0)
+        })
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-10)
+        it("to the south after turning left 4 times", () => {
+            const robot = new Robot()
 
-        robot.forward()
+            robot.left()
+            robot.left()
+            robot.left()
+            robot.left()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-20)
+            expect(robot.orientation).to.equal("north")
 
-        robot.forward()
+            robot.backward()
 
-        expect(robot.x).to.equal(0)
-        expect(robot.y).to.equal(-30)
+            expect(robot.direction).to.equal("backward")
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(10)
+
+            robot.backward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(20)
+
+            robot.backward()
+
+            expect(robot.x).to.equal(0)
+            expect(robot.y).to.equal(30)
+        })
     })
 
 })
